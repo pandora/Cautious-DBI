@@ -1,0 +1,14 @@
+NAME
+    CautiousDBI - Guards against fetchrow_array[ref] returning lists poulated with undef values.
+
+SYNOPSIS
+      use CautiousDBI;
+      my $dbh = CautiousDBI->connect("dbi:SQLite:dbname=$dbfile","","");
+
+DESCRIPTION
+    In-place replacement for DBI which guards against fetchrow_array[ref]
+    calls that return lists populated with undef rather than empty lists.
+
+    Lists containing undef values will evaluate to true in this while loop:
+        while(my @row = $sth->fetchrow_array) { ... }
+    which result in an infinite loop.
