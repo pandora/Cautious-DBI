@@ -1,5 +1,5 @@
 NAME
-    CautiousDBI - Guards against fetchrow_array[ref] returning lists poulated with undef values.
+    CautiousDBI - Guard against fetchrow_array[ref] returning undef-poulated lists.
 
 SYNOPSIS
       use CautiousDBI;
@@ -11,4 +11,4 @@ DESCRIPTION
 
     Lists containing undef values will evaluate to true in this while loop:
         while(my @row = $sth->fetchrow_array) { ... }
-    which result in an infinite loop.
+    which results in an infinite loop.
